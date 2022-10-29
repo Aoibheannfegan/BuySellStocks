@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <table action="/history">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Share Price</th>
+                <th>Total Value</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add Current Stocks Owned to Table -->
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.units }}</td>
+                    <td>{{ stock.price | usd }}</td>
+                    <td>{{ stock.cost | usd }}</td>
+                    <td>{{ stock.status }}</td>
+                    <td>{{ stock.time }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}
