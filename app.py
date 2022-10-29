@@ -88,7 +88,11 @@ def buy():
         else:
             symbol = symbol.upper()
 
-        shares = request.form.get("shares")
+        try:
+            shares = int(request.form.get("shares"))
+        except ValueError:
+            return apology("shares must be a posative integer", 400)
+            
         stock_data = lookup(symbol)
         user_data = db.execute("SELECT cash FROM users WHERE id = ?", id)
         cash = user_data[0]["cash"]
