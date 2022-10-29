@@ -118,8 +118,6 @@ def buy():
         # error check
         if not shares:
             return apology("Must enter a number of shares")
-        if not shares.isdigit():
-            return apology("You cannot purchase partial shares.")
         if shares < 1:
             return apology("Must enter a positive number of shares")
         if cash < cost:
