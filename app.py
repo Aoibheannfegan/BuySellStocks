@@ -224,11 +224,11 @@ def register():
 
         # error check
         if not username:
-            return apology("Username Required", 403)
+            return apology("Username Required", 400)
         if len(rows) == 1:
             return apology("Username already exists", 403)
         if not password:
-            return apology("Password Required", 403)
+            return apology("Password Required", 400)
         if len(password) < 8:
             return apology("Password must have at least 8 characters", 403)
         if not any(c.isdigit() for c in password):
@@ -236,7 +236,7 @@ def register():
         if not confirmation:
             return apology("Please re-enter password", 403)
         if not password == confirmation:
-            return apology("Passwords do not match", 403)
+            return apology("Passwords do not match", 400)
 
         # if valid then update the user db
         db.execute("INSERT INTO users(username, hash) VALUES(?, ?)", username, password_hash)
