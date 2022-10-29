@@ -226,15 +226,15 @@ def register():
         if not username:
             return apology("Username Required", 400)
         if len(rows) == 1:
-            return apology("Username already exists", 403)
+            return apology("Username already exists", 400)
         if not password:
             return apology("Password Required", 400)
         if len(password) < 8:
-            return apology("Password must have at least 8 characters", 403)
+            return apology("Password must have at least 8 characters", 400)
         if not any(c.isdigit() for c in password):
-            return apology("Password must contain numbers", 403)
+            return apology("Password must contain numbers", 400)
         if not confirmation:
-            return apology("Please re-enter password", 403)
+            return apology("Please re-enter password", 400)
         if not password == confirmation:
             return apology("Passwords do not match", 400)
 
