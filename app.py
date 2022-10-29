@@ -88,7 +88,7 @@ def buy():
         else:
             symbol = symbol.upper()
 
-        shares = int(request.form.get("shares"))
+        shares = request.form.get("shares")
         stock_data = lookup(symbol)
         user_data = db.execute("SELECT cash FROM users WHERE id = ?", id)
         cash = user_data[0]["cash"]
